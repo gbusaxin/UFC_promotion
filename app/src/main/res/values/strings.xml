@@ -3,4 +3,7 @@
     <string name="title_home">Home</string>
     <string name="title_dashboard">Dashboard</string>
     <string name="title_notifications">Notifications</string>
+    <string name="news">Новости</string>
+    <string name="fights">Бои</string>
+    <string name="pound_for">Лучше Р4Р</string>
 </resources>

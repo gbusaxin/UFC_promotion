@@ -3,23 +3,23 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/mobile_navigation"
-    app:startDestination="@+id/navigation_home">
+    app:startDestination="@+id/navigation_news">
 
     <fragment
-        android:id="@+id/navigation_home"
-        android:name="com.example.ufcpromotion.ui.home.HomeFragment"
-        android:label="@string/title_home"
-        tools:layout="@layout/fragment_home" />
+        android:id="@+id/navigation_news"
+        android:name="com.example.ufcpromotion.presentation.ui.news.NewsFragment"
+        android:label="@string/news"
+        tools:layout="@layout/fragment_news" />
 
     <fragment
-        android:id="@+id/navigation_dashboard"
-        android:name="com.example.ufcpromotion.ui.dashboard.DashboardFragment"
-        android:label="@string/title_dashboard"
-        tools:layout="@layout/fragment_dashboard" />
+        android:id="@+id/navigation_fights"
+        android:name="com.example.ufcpromotion.presentation.ui.fights.FightsFragment"
+        android:label="@string/fights"
+        tools:layout="@layout/fragment_fights" />
 
     <fragment
-        android:id="@+id/navigation_notifications"
-        android:name="com.example.ufcpromotion.ui.notifications.NotificationsFragment"
-        android:label="@string/title_notifications"
-        tools:layout="@layout/fragment_notifications" />
+        android:id="@+id/navigation_pound_for"
+        android:name="com.example.ufcpromotion.presentation.ui.p4p.PoundForFragment"
+        android:label="@string/pound_for"
+        tools:layout="@layout/fragment_pound_for" />
 </navigation>
