@@ -1,6 +1,7 @@
 package com.example.ufcpromotion.di
 
 import android.app.Application
+import com.example.ufcpromotion.presentation.MainActivity
 import com.example.ufcpromotion.presentation.UfcApp
 import com.example.ufcpromotion.presentation.ui.fights.FightsFragment
 import com.example.ufcpromotion.presentation.ui.news.NewsFragment
@@ -23,6 +24,8 @@ interface ApplicationComponent {
     fun inject(fragment: FightsFragment)
 
     fun inject(fragment: PoundForFragment)
+
+    fun inject(activity: MainActivity)
 
     fun inject(application: UfcApp)
 

@@ -13,7 +13,7 @@ class NewsViewModel @Inject constructor(
     val newsItemData = getNewsUseCase()
 
     init {
-        loadNewsUseCase
+        loadNewsUseCase()
     }
 
 }

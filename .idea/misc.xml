@@ -5,6 +5,10 @@
       <map>
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.20108695652173914" />
         <entry key="app/src/main/res/layout/fragment_dashboard.xml" value="0.20108695652173914" />
+        <entry key="app/src/main/res/layout/fragment_fights.xml" value="0.13697916666666668" />
+        <entry key="app/src/main/res/layout/fragment_news.xml" value="0.25" />
+        <entry key="app/src/main/res/layout/fragment_pound_for.xml" value="0.13697916666666668" />
+        <entry key="app/src/main/res/layout/item_news.xml" value="0.25" />
         <entry key="app/src/main/res/menu/bottom_nav_menu.xml" value="0.20092592592592592" />
       </map>
     </option>

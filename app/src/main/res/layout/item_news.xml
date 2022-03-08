@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:padding="8dp"
+    android:background="@color/transparent_05"
+    android:layout_marginBottom="6dp">
+
+    <ImageView
+        android:id="@+id/imageViewNews"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:minHeight="180dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:ignore="ContentDescription"
+        tools:srcCompat="@tools:sample/avatars" />
+
+    <TextView
+        android:id="@+id/textViewNewsTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@color/transparent_25"
+        android:text="TextView"
+        android:textColor="@color/white"
+        android:textStyle="bold"
+        android:textSize="16sp"
+        app:layout_constraintEnd_toEndOf="@+id/imageViewNews"
+        app:layout_constraintStart_toStartOf="@+id/imageViewNews"
+        app:layout_constraintTop_toTopOf="@+id/imageViewNews" />
+
+    <TextView
+        android:id="@+id/textViewNewsShort"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="6dp"
+        android:background="@color/transparent_25"
+        android:text="TextView"
+        android:textColor="@color/white"
+        android:textStyle="italic"
+        app:layout_constraintEnd_toEndOf="@+id/imageViewNews"
+        app:layout_constraintStart_toStartOf="@+id/imageViewNews"
+        app:layout_constraintTop_toBottomOf="@+id/textViewNewsTitle" />
+
+    <TextView
+        android:id="@+id/textViewNewsDate"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="TextView"
+        app:layout_constraintBottom_toBottomOf="@+id/imageViewNews"
+        app:layout_constraintStart_toStartOf="@+id/imageViewNews" />
+</androidx.constraintlayout.widget.ConstraintLayout>
