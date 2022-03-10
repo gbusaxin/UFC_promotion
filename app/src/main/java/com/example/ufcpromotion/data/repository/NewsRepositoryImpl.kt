@@ -27,7 +27,7 @@ class NewsRepositoryImpl @Inject constructor(
     override fun loadNewsData() {
         val workManager = WorkManager.getInstance(application)
         workManager.enqueueUniqueWork(
-            RefreshNewsWorker.NAME,
+            RefreshNewsWorker.WORKER_NAME,
             ExistingWorkPolicy.REPLACE,
             RefreshNewsWorker.makeRequest()
         )

@@ -19,7 +19,11 @@ class RefreshWorkerFactory @Inject constructor(
         return when (workerClassName) {
             RefreshNewsWorker::class.qualifiedName -> {
                 val childWorkerFactory = workerProviders[RefreshNewsWorker::class.java]?.get()
-                return childWorkerFactory?.create(appContext,workerParameters)
+                return childWorkerFactory?.create(appContext, workerParameters)
+            }
+            RefreshFightsWorker::class.qualifiedName -> {
+                val childWorkerFactory = workerProviders[RefreshFightsWorker::class.java]?.get()
+                return childWorkerFactory?.create(appContext, workerParameters)
             }
             else -> null
         }

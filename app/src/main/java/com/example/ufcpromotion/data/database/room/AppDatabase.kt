@@ -4,9 +4,17 @@ import android.content.Context
 import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
+import com.example.ufcpromotion.data.database.model.FixturesDbModel
 import com.example.ufcpromotion.data.database.model.NewsDbModel
+import com.example.ufcpromotion.data.database.model.ResultDbModel
 
-@Database(entities = [NewsDbModel::class], version = 1, exportSchema = false)
+@Database(
+    entities = [
+        NewsDbModel::class,
+        FixturesDbModel::class,
+        ResultDbModel::class
+    ], version = 3, exportSchema = false
+)
 abstract class AppDatabase : RoomDatabase() {
 
     companion object {

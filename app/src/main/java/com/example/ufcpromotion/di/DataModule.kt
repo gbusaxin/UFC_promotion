@@ -5,7 +5,9 @@ import com.example.ufcpromotion.data.database.room.AppDatabase
 import com.example.ufcpromotion.data.database.room.DbDao
 import com.example.ufcpromotion.data.network.retrofit.ApiFactory
 import com.example.ufcpromotion.data.network.retrofit.ApiService
+import com.example.ufcpromotion.data.repository.FightsRepositoryImpl
 import com.example.ufcpromotion.data.repository.NewsRepositoryImpl
+import com.example.ufcpromotion.domain.FightsRepository
 import com.example.ufcpromotion.domain.NewsRepository
 import dagger.Binds
 import dagger.Module
@@ -16,7 +18,15 @@ interface DataModule {
 
     @Binds
     @ApplicationScope
-    fun bindNewsRepository(impl: NewsRepositoryImpl): NewsRepository
+    fun bindNewsRepository(
+        impl: NewsRepositoryImpl
+    ): NewsRepository
+
+    @Binds
+    @ApplicationScope
+    fun bindFightsRepository(
+        impl: FightsRepositoryImpl
+    ): FightsRepository
 
     companion object {
         @Provides

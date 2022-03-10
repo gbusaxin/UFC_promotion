@@ -23,23 +23,18 @@ class RefreshNewsWorker(
             try {
                 val newsDto = apiService.loadNewsData()
                 val newsDbModel = newsDto.map { newsMapper.mapDtoToDbModel(it) }
-                Log.d(
-                    "WORK_NEWS",
-                    newsDto.toString()
-                        ?: "${RefreshNewsWorker::class.qualifiedName} -> IS NOT WORKING"
-                )
                 dbDao.insertNewsData(newsDbModel)
             } catch (e: Exception) {
                 e.printStackTrace()
             }
-            delay(DELAY_TIME)
+            delay(WORKER_DELAY_TIME)
         }
     }
 
     companion object {
-        const val NAME = "RefreshNewsWorker"
+        const val WORKER_NAME = "RefreshNewsWorker"
 
-        const val DELAY_TIME: Long = 10000
+        const val WORKER_DELAY_TIME: Long = 20000
 
         fun makeRequest(): OneTimeWorkRequest {
             return OneTimeWorkRequestBuilder<RefreshNewsWorker>().build()
