@@ -30,6 +30,7 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         component.inject(this)
         super.onCreate(savedInstanceState)
+        supportActionBar?.hide()
         lifecycleScope.launch {
             downloadBackgroundImage()
         }
