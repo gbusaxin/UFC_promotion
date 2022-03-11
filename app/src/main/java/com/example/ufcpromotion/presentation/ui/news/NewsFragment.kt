@@ -5,9 +5,12 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.os.bundleOf
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.example.ufcpromotion.R
 import com.example.ufcpromotion.databinding.FragmentNewsBinding
 import com.example.ufcpromotion.presentation.UfcApp
 import com.example.ufcpromotion.presentation.adapters.NewsAdapter
@@ -51,13 +54,20 @@ class NewsFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         val rvNews = binding.recyclerViewNews
         viewModel = ViewModelProvider(this, viewModelFactory)[NewsViewModel::class.java]
-        viewModel.newsItemData.observe(viewLifecycleOwner) {
-            newsAdapter.submitList(it)
+        viewModel.newsItemData.observe(viewLifecycleOwner) { list ->
+            newsAdapter.submitList(list)
             rvNews.apply {
                 layoutManager =
                     LinearLayoutManager(requireContext(), LinearLayoutManager.VERTICAL, false)
                 adapter = newsAdapter
                 setHasFixedSize(true)
+            }
+            newsAdapter.onNewsClick = {
+                val bundle = bundleOf("news" to it.titleNews)
+                findNavController().navigate(
+                    R.id.action_navigation_news_to_newsDetailFragment,
+                    bundle
+                )
             }
         }
     }

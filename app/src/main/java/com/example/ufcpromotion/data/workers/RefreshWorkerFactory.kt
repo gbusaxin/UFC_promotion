@@ -25,6 +25,10 @@ class RefreshWorkerFactory @Inject constructor(
                 val childWorkerFactory = workerProviders[RefreshFightsWorker::class.java]?.get()
                 return childWorkerFactory?.create(appContext, workerParameters)
             }
+            RefreshP4PWorker::class.qualifiedName -> {
+                val childWorkerFactory = workerProviders[RefreshP4PWorker::class.java]?.get()
+                return childWorkerFactory?.create(appContext, workerParameters)
+            }
             else -> null
         }
     }

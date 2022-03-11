@@ -5,5 +5,6 @@ import com.example.ufcpromotion.domain.pojo.NewsItem
 
 interface NewsRepository {
     fun getNewsData(): LiveData<List<NewsItem>>
+    fun getSelectedNews(news:String):LiveData<NewsItem>
     fun loadNewsData()
 }

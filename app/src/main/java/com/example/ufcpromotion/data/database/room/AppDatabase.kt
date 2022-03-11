@@ -6,14 +6,16 @@ import androidx.room.Room
 import androidx.room.RoomDatabase
 import com.example.ufcpromotion.data.database.model.FixturesDbModel
 import com.example.ufcpromotion.data.database.model.NewsDbModel
+import com.example.ufcpromotion.data.database.model.P4PDbModel
 import com.example.ufcpromotion.data.database.model.ResultDbModel
 
 @Database(
     entities = [
         NewsDbModel::class,
         FixturesDbModel::class,
-        ResultDbModel::class
-    ], version = 3, exportSchema = false
+        ResultDbModel::class,
+        P4PDbModel::class
+    ], version = 4, exportSchema = false
 )
 abstract class AppDatabase : RoomDatabase() {
 

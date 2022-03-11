@@ -19,8 +19,14 @@ class NewsRepositoryImpl @Inject constructor(
 ) : NewsRepository {
 
     override fun getNewsData(): LiveData<List<NewsItem>> {
-        return Transformations.map(dao.getNewsData()){
+        return Transformations.map(dao.getNewsData()) {
             it.map { mapper.mapDbModelToEntity(it) }
+        }
+    }
+
+    override fun getSelectedNews(news: String): LiveData<NewsItem> {
+        return Transformations.map(dao.getSelectedNewsData(news)) {
+            mapper.mapDbModelToEntity(it)
         }
     }
 

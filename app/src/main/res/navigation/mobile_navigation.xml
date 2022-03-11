@@ -9,7 +9,15 @@
         android:id="@+id/navigation_news"
         android:name="com.example.ufcpromotion.presentation.ui.news.NewsFragment"
         android:label="@string/news"
-        tools:layout="@layout/fragment_news" />
+        tools:layout="@layout/fragment_news" >
+        <action
+            android:id="@+id/action_navigation_news_to_newsDetailFragment"
+            app:destination="@id/newsDetailFragment" />
+        <argument
+            android:name="news"
+            app:argType="string"
+            android:defaultValue="null" />
+    </fragment>
 
     <fragment
         android:id="@+id/navigation_fights"
@@ -22,4 +30,9 @@
         android:name="com.example.ufcpromotion.presentation.ui.p4p.PoundForFragment"
         android:label="@string/pound_for"
         tools:layout="@layout/fragment_pound_for" />
+    <fragment
+        android:id="@+id/newsDetailFragment"
+        android:name="com.example.ufcpromotion.presentation.ui.news.NewsDetailFragment"
+        android:label="fragment_news_detail"
+        tools:layout="@layout/fragment_news_detail" />
 </navigation>

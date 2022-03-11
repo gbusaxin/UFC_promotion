@@ -1,6 +1,7 @@
 package com.example.ufcpromotion.di
 
 import androidx.lifecycle.ViewModel
+import com.example.ufcpromotion.presentation.WebViewModel
 import com.example.ufcpromotion.presentation.ui.fights.FightsViewModel
 import com.example.ufcpromotion.presentation.ui.news.NewsViewModel
 import com.example.ufcpromotion.presentation.ui.p4p.PoundForViewModel
@@ -25,4 +26,9 @@ interface ViewModelModule {
     @IntoMap
     @ViewModelKey(PoundForViewModel::class)
     fun bindPoundForViewModel(viewModule: PoundForViewModel): ViewModel
+
+    @Binds
+    @IntoMap
+    @ViewModelKey(WebViewModel::class)
+    fun bindWebViewModel(viewModule: WebViewModel): ViewModel
 }

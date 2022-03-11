@@ -4,56 +4,52 @@ import android.content.Context
 import android.util.Log
 import androidx.work.*
 import com.example.ufcpromotion.data.database.room.DbDao
-import com.example.ufcpromotion.data.mappers.FightsMapper
+import com.example.ufcpromotion.data.mappers.P4PMapper
 import com.example.ufcpromotion.data.network.retrofit.ApiService
+import com.google.common.util.concurrent.ListenableFuture
 import kotlinx.coroutines.delay
+import java.lang.Exception
 import javax.inject.Inject
 
-class RefreshFightsWorker(
+class RefreshP4PWorker(
     context: Context,
     params: WorkerParameters,
     val dao: DbDao,
     val retrofit: ApiService,
-    val mapper: FightsMapper
+    val mapper: P4PMapper
 ) : CoroutineWorker(context, params) {
 
     override suspend fun doWork(): Result {
-        while (true) {
+        while (true){
             try {
-                val fixtDto = retrofit.loadFixturesData()
-                val resDto = retrofit.loadResultsData()
-                val fixtDbModel = fixtDto.map { mapper.mapFixturesDtoToDbModel(it) }
-                val resDbModel = resDto.map { mapper.mapResultDtoToDbModel(it) }
-                dao.deleteAllFixtures()
-                dao.deleteAllResults()
-                dao.insertFixturesData(fixtDbModel)
-                dao.insertResultsData(resDbModel)
-            } catch (e: Exception) {
-                Log.e("WORK_FIGHTS_ERROR", e.toString())
+                val dto = retrofit.loadP4PData()
+                val dbModel = dto.map { mapper.mapDtoToDbModel(it) }
+                dao.insertP4PData(dbModel)
+            }catch (e:Exception){
                 e.printStackTrace()
             }
             delay(WORKER_DELAY_TIME)
         }
     }
 
-    companion object {
-        const val WORKER_NAME = "RefreshFightsWorker"
-        const val WORKER_DELAY_TIME: Long = 20000
+    companion object{
+        const val WORKER_NAME = "RefreshP4PWorker"
+        const val WORKER_DELAY_TIME: Long = 30000
         fun makeRequest(): OneTimeWorkRequest {
-            return OneTimeWorkRequestBuilder<RefreshFightsWorker>().build()
+            return OneTimeWorkRequestBuilder<RefreshP4PWorker>().build()
         }
     }
 
     class Factory @Inject constructor(
         val dao: DbDao,
         val retrofit: ApiService,
-        val mapper: FightsMapper
+        val mapper: P4PMapper
     ) : ChildWorkerFactory {
         override fun create(
             context: Context,
             workerParameters: WorkerParameters
         ): ListenableWorker {
-            return RefreshFightsWorker(
+            return RefreshP4PWorker(
                 context,
                 workerParameters,
                 dao,

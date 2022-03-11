@@ -23,6 +23,8 @@ class NewsAdapter @Inject constructor(
         val image = binding.imageViewNews
     }
 
+    var onNewsClick: ((NewsItem) -> Unit)? = null
+
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): NewsViewHolder {
         return NewsViewHolder(
             LayoutInflater.from(application).inflate(R.layout.item_news, parent, false)
@@ -36,6 +38,9 @@ class NewsAdapter @Inject constructor(
             short.text = item.shortNews
             date.text = item.dateNews
             image.load(item.imageNews)
+            itemView.setOnClickListener {
+                onNewsClick?.invoke(item)
+            }
         }
     }
 }
